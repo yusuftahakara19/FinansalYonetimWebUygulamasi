@@ -1,18 +1,83 @@
 ﻿@model EntityLayer.Concrete.Account
 
-<h2>Account Details</h2>
-<div>
-    <h4>Account</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">Account Name</dt>
-        <dd class="col-sm-10">@Model.AccountName</dd>
+<div class="details-container">
+    <h2>Hesap Detayları</h2>
+    <div class="details-content">
+        <h4>Hesap</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">Hesap Adı</dt>
+            <dd class="col-sm-10">@Model.AccountName</dd>
 
-        <dt class="col-sm-2">Balance</dt>
-        <dd class="col-sm-10">@Model.Balance</dd>
-    </dl>
+            <dt class="col-sm-2">Bakiye</dt>
+            <dd class="col-sm-10">@Model.Balance</dd>
+        </dl>
+    </div>
+    <div class="details-actions">
+        <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Düzenle</a>
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Listeye Dön</a>
+    </div>
 </div>
-<div>
-    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Edit</a>
-    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
-</div>
+
+<style>
+    .details-container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .details-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+    .details-content {
+        margin-bottom: 1.5rem;
+    }
+
+    .details-actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn {
+        width: 48%;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+    }
+
+    .btn-primary {
+        background-color: #006748;
+        border-color: #00573f;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #00573f;
+            border-color: #004d3b;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border-color: #5a6268;
+        color: #fff;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            border-color: #545b62;
+        }
+</style>

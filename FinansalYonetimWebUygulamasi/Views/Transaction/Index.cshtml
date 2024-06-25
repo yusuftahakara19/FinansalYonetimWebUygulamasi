@@ -1,30 +1,123 @@
 ﻿@model IEnumerable<EntityLayer.Concrete.Transaction>
 
-<h2>Masraflar</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Açıklama</th>
-            <th>Miktar</th>
-            <th>Tarih</th>
-            <th>Kategori</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var transaction in Model)
-        {
+<div class="index-container">
+    <h2>Masraflar</h2>
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@transaction.Description</td>
-                <td>@transaction.Amount</td>
-                <td>@transaction.Date.ToString("dd/MM/yyyy")</td>
-                <td>@transaction.Category</td>
-                <td>
-                    <a href="@Url.Action("Edit", new { id = transaction.Id })" class="btn btn-primary">Düzenle</a>
-                    <a href="@Url.Action("Delete", new { id = transaction.Id })" class="btn btn-danger">Sil</a>
-                </td>
+                <th>Açıklama</th>
+                <th>Miktar</th>
+                <th>Tarih</th>
+                <th>Kategori</th>
+                <th>İşlemler</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var transaction in Model)
+            {
+                <tr>
+                    <td>@transaction.Description</td>
+                    <td>@transaction.Amount</td>
+                    <td>@transaction.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@transaction.Category</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = transaction.Id })" class="btn btn-primary btn-sm">Düzenle</a>
+                        <a href="@Url.Action("Delete", new { id = transaction.Id })" class="btn btn-danger btn-sm">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("Create")" class="btn btn-success">Yeni Masraf Ekle</a>
+</div>
+
+<style>
+    .index-container {
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .index-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
-    </tbody>
-</table>
-<a href="@Url.Action("Create")" class="btn btn-success">Yeni Masraf Ekle</a>
+
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #343a40;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn {
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        min-width: 5rem;
+    }
+
+    .btn-primary {
+        background-color: #006748;
+        border-color: #00573f;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #00573f;
+            border-color: #004d3b;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #bd2130;
+        color: #fff;
+    }
+
+        .btn-danger:hover {
+            background-color: #bd2130;
+            border-color: #a71d2a;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #218838;
+        color: #fff;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+</style>

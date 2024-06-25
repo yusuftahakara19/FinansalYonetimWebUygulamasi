@@ -58,5 +58,32 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             HttpContext.Session.Remove("UserEmail");
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userEmail = HttpContext.Session.GetString("UserEmail");
+                var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
+                if (user != null && user.Password == model.CurrentPassword)
+                {
+                    user.Password = model.NewPassword;
+                    _userService.Update(user);
+                    ViewBag.Message = "Password changed successfully.";
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Current password is incorrect.");
+                }
+            }
+            return View(model);
+        }
     }
 }

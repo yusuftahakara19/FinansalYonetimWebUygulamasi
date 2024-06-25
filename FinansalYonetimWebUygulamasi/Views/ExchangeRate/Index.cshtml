@@ -1,25 +1,79 @@
 ﻿@model Dictionary<string, BusinessLayer.Models.ExchangeRate>
 
-<h2>Exchange Rates</h2>
+<div class="index-container">
+    <h2>Kur Bilgileri</h2>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Currency</th>
-            <th>Buy</th>
-            <th>Sell</th>
-            <th>Change (%)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var rate in Model)
-        {
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@rate.Value.Currency</td>
-                <td>@rate.Value.Alis</td>
-                <td>@rate.Value.Satis</td>
-                <td>@rate.Value.Degisim</td>
+                <th>Döviz</th>
+                <th>Alış</th>
+                <th>Satış</th>
+                <th>Değişim (%)</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var rate in Model)
+            {
+                <tr>
+                    <td>@rate.Value.Currency</td>
+                    <td>@rate.Value.Alis</td>
+                    <td>@rate.Value.Satis</td>
+                    <td class="@(rate.Value.Degisim >= 0 ? "text-success" : "text-danger")">
+                        @rate.Value.Degisim
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .index-container {
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .index-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
-    </tbody>
-</table>
+
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #343a40;
+        border-collapse: collapse;
+        text-align: center;
+    }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: middle;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .text-success {
+        color: #28a745 !important;
+    }
+
+    .text-danger {
+        color: #dc3545 !important;
+    }
+</style>

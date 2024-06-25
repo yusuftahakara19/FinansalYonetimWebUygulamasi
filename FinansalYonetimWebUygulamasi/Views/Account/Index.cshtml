@@ -1,27 +1,43 @@
 ﻿@model IEnumerable<EntityLayer.Concrete.Account>
 
-<h2>Accounts</h2>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Account Name</th>
-            <th>Balance</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var account in Model)
-        {
+<div class="account-container">
+    <h2>Hesaplar</h2>
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@account.AccountName</td>
-                <td>@account.Balance</td>
-                <td>
-                    <a href="@Url.Action("Edit", new { id = account.Id })" class="btn btn-primary">Edit</a>
-                    <a href="@Url.Action("Details", new { id = account.Id })" class="btn btn-info">Details</a>
-                    <a href="@Url.Action("Delete", new { id = account.Id })" class="btn btn-danger">Delete</a>
-                </td>
+                <th>Hesap Adı</th>
+                <th>Bakiye</th>
+                <th>İşlemler</th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in Model)
+            {
+                <tr>
+                    <td>@account.AccountName</td>
+                    <td>@account.Balance</td>
+                    <td>
+                        <a href="@Url.Action("Edit", new { id = account.Id })" class="btn btn-primary btn-sm">Düzenle</a>
+                        <a href="@Url.Action("Details", new { id = account.Id })" class="btn btn-info btn-sm">Detaylar</a>
+                        <a href="@Url.Action("Delete", new { id = account.Id })" class="btn btn-danger btn-sm">Sil</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <a href="@Url.Action("Create")" class="btn btn-success">Yeni Hesap Oluştur</a>
+</div>
+
+<style>
+    .account-container {
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .account-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
         }
-    </tbody>
-</table>
-<a href="@Url.Action("Create")" class="btn btn-success">Create New Account</a>
+</style>

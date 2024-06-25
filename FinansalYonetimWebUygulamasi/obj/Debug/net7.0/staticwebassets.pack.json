@@ -25,6 +25,10 @@
       "PackagePath": "staticwebassets\\images\\slide3.png"
     },
     {
+      "Id": "D:\\FinansalYonetimWebUygulamasi\\FinansalYonetimWebUygulamasi\\wwwroot\\js\\jquery.validate.tr.js",
+      "PackagePath": "staticwebassets\\js\\jquery.validate.tr.js"
+    },
+    {
       "Id": "D:\\FinansalYonetimWebUygulamasi\\FinansalYonetimWebUygulamasi\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

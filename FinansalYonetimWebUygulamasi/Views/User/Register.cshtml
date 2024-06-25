@@ -1,21 +1,103 @@
 ﻿@model FinansalYonetimWebUygulamasi.Models.RegisterViewModel
 
-<h2>Register</h2>
-<form asp-action="Register" method="post">
-    <div class="form-group">
-        <label asp-for="Name"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Email"></label>
-        <input asp-for="Email" class="form-control" />
-        <span asp-validation-for="Email" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Password"></label>
-        <input asp-for="Password" type="password" class="form-control" />
-        <span asp-validation-for="Password" class="text-danger"></span>
-    </div>
-    <button type="submit" class="btn btn-primary">Register</button>
-</form>
+<div class="register-container">
+    <h2>Kayıt Ol</h2>
+    <form asp-action="Register" method="post">
+        <div class="form-group">
+            <label asp-for="Name">Ad</label>
+            <input asp-for="Name" class="form-control" placeholder="Adınızı girin" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email">E-posta</label>
+            <input asp-for="Email" class="form-control" placeholder="E-posta adresinizi girin" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password">Şifre</label>
+            <div class="input-group">
+                <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Şifrenizi girin" />
+                <button type="button" class="btn btn-outline-secondary" id="togglePassword">
+                    Göster
+                </button>
+            </div>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+    </form>
+</div>
+
+<style>
+    .register-container {
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+        .register-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .input-group {
+        display: flex;
+        align-items: center;
+    }
+
+    .btn {
+        margin-left: 0.5rem;
+        padding: 0.5rem;
+        cursor: pointer;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        background-color: #f8f9fa;
+    }
+
+    .btn-primary {
+        background-color: #006748;
+        border-color: #00573f;
+        color: #fff;
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background-color: #00573f;
+            border-color: #004d3b;
+        }
+
+    .text-danger {
+        color: #dc3545;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var togglePasswordButton = document.getElementById('togglePassword');
+        var passwordField = document.getElementById('password');
+
+        togglePasswordButton.addEventListener('click', function () {
+            var type = passwordField.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordField.setAttribute('type', type);
+
+            // Toggle the button text
+            this.textContent = type === 'password' ? 'Göster' : 'Gizle';
+        });
+    });
+</script>

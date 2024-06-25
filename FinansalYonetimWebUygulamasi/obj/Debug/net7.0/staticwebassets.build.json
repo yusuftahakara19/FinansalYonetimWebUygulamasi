@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3Y+YtC2hR5y6NgSIp/p8O1OwRIfA9Akh7en91T1QTSI=",
+  "Hash": "lY9yIXnVBv6oLixQXOfxNX7CL75w7Fd6EtXIeT5O/xU=",
   "Source": "FinansalYonetimWebUygulamasi",
   "BasePath": "_content/FinansalYonetimWebUygulamasi",
   "Mode": "Default",
@@ -148,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\slide3.png"
+    },
+    {
+      "Identity": "D:\\FinansalYonetimWebUygulamasi\\FinansalYonetimWebUygulamasi\\wwwroot\\js\\jquery.validate.tr.js",
+      "SourceId": "FinansalYonetimWebUygulamasi",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\FinansalYonetimWebUygulamasi\\FinansalYonetimWebUygulamasi\\wwwroot\\",
+      "BasePath": "_content/FinansalYonetimWebUygulamasi",
+      "RelativePath": "js/jquery.validate.tr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\jquery.validate.tr.js"
     },
     {
       "Identity": "D:\\FinansalYonetimWebUygulamasi\\FinansalYonetimWebUygulamasi\\wwwroot\\js\\site.js",
