@@ -1,0 +1,22 @@
+﻿@model EntityLayer.Concrete.Account
+
+<h2>Delete Account</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Account Name</dt>
+        <dd class="col-sm-10">@Model.AccountName</dd>
+
+        <dt class="col-sm-2">Balance</dt>
+        <dd class="col-sm-10">@Model.Balance</dd>
+    </dl>
+</div>
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+    </div>
+</form>

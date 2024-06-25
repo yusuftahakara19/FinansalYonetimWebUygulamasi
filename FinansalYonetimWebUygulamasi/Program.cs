@@ -3,6 +3,9 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,14 +13,23 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FinanceDbContext>();
 builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IUserDal, EfUserDal>();
+builder.Services.AddScoped<IAccountService, AccountManager>();
+builder.Services.AddScoped<IAccountDal, EfAccountDal>();
 
-builder.Services.AddScoped<IAccountService, AccountManager>(); // IAccountService için baðýmlýlýk kaydý
-builder.Services.AddScoped<IAccountDal, EfAccountDal>(); // IAccountDal için baðýmlýlýk kaydý
-
-builder.Services.AddSession(); // Session servisini ekleyin
-builder.Services.AddHttpContextAccessor(); // IHttpContextAccessor'ý ekleyin
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+// Set the default culture for the application
+var defaultCulture = new CultureInfo("en-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(defaultCulture),
+    SupportedCultures = new List<CultureInfo> { defaultCulture },
+    SupportedUICultures = new List<CultureInfo> { defaultCulture }
+};
+app.UseRequestLocalization(localizationOptions);
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -31,7 +43,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseSession(); // Session middleware'ini ekleyin
+app.UseSession();
 app.UseAuthorization();
 
 app.MapControllerRoute(

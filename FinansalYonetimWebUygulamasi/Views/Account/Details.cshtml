@@ -1,0 +1,18 @@
+﻿@model EntityLayer.Concrete.Account
+
+<h2>Account Details</h2>
+<div>
+    <h4>Account</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">Account Name</dt>
+        <dd class="col-sm-10">@Model.AccountName</dd>
+
+        <dt class="col-sm-2">Balance</dt>
+        <dd class="col-sm-10">@Model.Balance</dd>
+    </dl>
+</div>
+<div>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-primary">Edit</a>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Back to List</a>
+</div>
