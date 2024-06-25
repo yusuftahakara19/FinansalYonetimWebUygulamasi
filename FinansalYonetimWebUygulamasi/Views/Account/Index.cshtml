@@ -1,0 +1,27 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Account>
+
+<h2>Accounts</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Account Name</th>
+            <th>Balance</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var account in Model)
+        {
+            <tr>
+                <td>@account.AccountName</td>
+                <td>@account.Balance</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = account.Id })" class="btn btn-primary">Edit</a>
+                    <a href="@Url.Action("Details", new { id = account.Id })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Delete", new { id = account.Id })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create")" class="btn btn-success">Create New Account</a>

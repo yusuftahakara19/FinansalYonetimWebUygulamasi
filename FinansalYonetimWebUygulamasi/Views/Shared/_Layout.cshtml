@@ -1,49 +1,49 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - FinansalYonetimWebUygulamasi</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/FinansalYonetimWebUygulamasi.styles.css" asp-append-version="true" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finansal Yönetim Web Uygulaması</title>
+    <link rel="stylesheet" href="~/css/site.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/site.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FinansalYonetimWebUygulamasi</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">Finansal Yönetim Web Uygulaması</a>
+            <button class="navbar-toggler" onclick="toggleMenu()">&#9776;</button>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="/home/index" class="nav-link">Anasayfa</a></li>
+                @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
+                {
+                    <li class="nav-item"><a href="/account/index" class="nav-link">Hesaplar</a></li>
+                    <li class="nav-item"><a href="/transaction/index" class="nav-link">Masraflar</a></li>
+                    <li class="nav-item"><a href="/transfer/index" class="nav-link">Para Transferi</a></li>
+                    <li class="nav-item"><a href="/user/logout" class="nav-link">Çıkış Yap</a></li>
+                }
+                else
+                {
+                    <li class="nav-item"><a href="/user/login" class="nav-link">Giriş Yap</a></li>
+                    <li class="nav-item"><a href="/user/register" class="nav-link">Kayıt Ol</a></li>
+                }
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        @RenderBody()
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer">
         <div class="container">
-            &copy; 2024 - FinansalYonetimWebUygulamasi - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <p>&copy; @DateTime.Now.Year Finansal Yönetim Web Uygulaması. Tüm Hakları Saklıdır.</p>
         </div>
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

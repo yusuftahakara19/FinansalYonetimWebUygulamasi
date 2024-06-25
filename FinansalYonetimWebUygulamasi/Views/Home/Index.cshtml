@@ -2,7 +2,33 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="slider">
+    <div class="slides">
+        <div class="slide">
+            <img src="~/images/slide1.png" alt="Slide 1">
+            <div class="caption">
+                <h2>Kolayca Kişisel Hesabınız Yönetin</h2>
+                <a href="#" class="button">Daha Fazla Bilgi</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="~/images/slide2.png" alt="Slide 2">
+            <div class="caption">
+                <h2>Masraf Kayıtlarınızı Tutun</h2>
+                <a href="#" class="button">Daha Fazla Bilgi</a>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="~/images/slide3.png" alt="Slide 3">
+            <div class="caption">
+                <h2>Para Transfer İşlemleri</h2>
+                <a href="#" class="button">Keşfet</a>
+            </div>
+        </div>
+    </div>
+    <div class="navigation">
+        <div class="nav-dot" onclick="currentSlide(1)"></div>
+        <div class="nav-dot" onclick="currentSlide(2)"></div>
+        <div class="nav-dot" onclick="currentSlide(3)"></div>
+    </div>
 </div>
