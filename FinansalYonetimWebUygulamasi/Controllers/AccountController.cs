@@ -32,6 +32,9 @@ namespace FinansalYonetimWebUygulamasi.Controllers
                 return RedirectToAction("Login", "Users");
             }
 
+            ViewBag.UserEmail = user.Email;
+            ViewBag.UserId = user.Id;
+
             var accounts = _accountService.GetAll(a => a.UserId == user.Id); // Burada UserId değil Id kullanıyoruz
             return View(accounts);
         }

@@ -2,6 +2,12 @@
 
 <div class="account-container">
     <h2>Hesaplar</h2>
+
+    <div class="user-info">
+        <p><strong>Kullanıcı E-posta:</strong> @ViewBag.UserEmail</p>
+        <p><strong>Kullanıcı ID:</strong> @ViewBag.UserId</p>
+    </div>
+
     <table class="table table-striped">
         <thead>
             <tr>
@@ -39,5 +45,103 @@
         .account-container h2 {
             text-align: center;
             margin-bottom: 1.5rem;
+        }
+
+    .user-info {
+        text-align: center;
+        margin-bottom: 1.5rem;
+    }
+
+        .user-info p {
+            margin: 0.5rem 0;
+        }
+
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #343a40;
+        border-collapse: collapse;
+        text-align: center; /* Center align table text */
+    }
+
+        .table th,
+        .table td {
+            padding: 0.75rem;
+            vertical-align: middle; /* Center align table cell contents */
+            border-top: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            vertical-align: middle;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .table tbody + tbody {
+            border-top: 2px solid #dee2e6;
+        }
+
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .btn {
+        margin-right: 0.5rem;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: 0.25rem;
+        min-width: 5rem;
+    }
+
+    .btn-primary {
+        background-color: #006748;
+        border-color: #00573f;
+        color: #fff;
+    }
+
+        .btn-primary:hover {
+            background-color: #00573f;
+            border-color: #004d3b;
+        }
+
+    .btn-info {
+        background-color: #17a2b8;
+        border-color: #117a8b;
+        color: #fff;
+    }
+
+        .btn-info:hover {
+            background-color: #117a8b;
+            border-color: #0f6c79;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        border-color: #bd2130;
+        color: #fff;
+    }
+
+        .btn-danger:hover {
+            background-color: #bd2130;
+            border-color: #a71d2a;
+        }
+
+    .btn-success {
+        background-color: #28a745;
+        border-color: #218838;
+        color: #fff;
+    }
+
+        .btn-success:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
         }
 </style>
