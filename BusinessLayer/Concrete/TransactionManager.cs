@@ -2,18 +2,14 @@
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccessLayer.Abstract;
 
 namespace BusinessLayer.Concrete
 {
     public class TransactionManager : ITransactionService
     {
-
-        ITransactionDal _transactionDal;
+        private readonly ITransactionDal _transactionDal;
 
         public TransactionManager(ITransactionDal transactionDal)
         {
@@ -22,27 +18,31 @@ namespace BusinessLayer.Concrete
 
         public Transaction GetById(int id)
         {
-            throw new NotImplementedException();
+            return _transactionDal.Get(t => t.Id == id);
         }
 
         public void Create(Transaction entity)
         {
-            throw new NotImplementedException();
+            _transactionDal.Add(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var transaction = _transactionDal.Get(t => t.Id == id);
+            if (transaction != null)
+            {
+                _transactionDal.Delete(transaction);
+            }
         }
 
         public IEnumerable<Transaction> GetAll(Expression<Func<Transaction, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return _transactionDal.GetAll(filter);
         }
 
         public void Update(Transaction entity)
         {
-            throw new NotImplementedException();
+            _transactionDal.Update(entity);
         }
     }
 }

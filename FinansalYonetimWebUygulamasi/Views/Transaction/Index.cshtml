@@ -1,0 +1,30 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Transaction>
+
+<h2>Masraflar</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Açıklama</th>
+            <th>Miktar</th>
+            <th>Tarih</th>
+            <th>Kategori</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transaction in Model)
+        {
+            <tr>
+                <td>@transaction.Description</td>
+                <td>@transaction.Amount</td>
+                <td>@transaction.Date.ToString("dd/MM/yyyy")</td>
+                <td>@transaction.Category</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = transaction.Id })" class="btn btn-primary">Düzenle</a>
+                    <a href="@Url.Action("Delete", new { id = transaction.Id })" class="btn btn-danger">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create")" class="btn btn-success">Yeni Masraf Ekle</a>

@@ -15,20 +15,27 @@ builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IUserDal, EfUserDal>();
 builder.Services.AddScoped<IAccountService, AccountManager>();
 builder.Services.AddScoped<IAccountDal, EfAccountDal>();
+builder.Services.AddScoped<ITransactionService, TransactionManager>(); // Bu satýrý ekleyin
+builder.Services.AddScoped<ITransactionDal, EfTransactionDal>(); // Bu satýrý ekleyin
+builder.Services.AddScoped<ITransferService, TransferManager>(); // Bu satýrý ekleyin
+builder.Services.AddScoped<ITransferDal, EfTransferDal>(); // Bu satýrý ekleyin
+
 
 builder.Services.AddSession();
 builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+
 // Set the default culture for the application
-var defaultCulture = new CultureInfo("en-US");
+var defaultCulture = new CultureInfo("tr-TR");
 var localizationOptions = new RequestLocalizationOptions
 {
     DefaultRequestCulture = new RequestCulture(defaultCulture),
     SupportedCultures = new List<CultureInfo> { defaultCulture },
     SupportedUICultures = new List<CultureInfo> { defaultCulture }
 };
+
 app.UseRequestLocalization(localizationOptions);
 
 // Configure the HTTP request pipeline.

@@ -1,18 +1,16 @@
 ﻿using BusinessLayer.Abstract;
 using DataAccessLayer.Abstract;
+using EntityLayer;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BusinessLayer.Concrete
 {
     public class TransferManager : ITransferService
     {
-        ITransferDal _transferDal;
+        private readonly ITransferDal _transferDal;
 
         public TransferManager(ITransferDal transferDal)
         {
@@ -21,27 +19,31 @@ namespace BusinessLayer.Concrete
 
         public Transfer GetById(int id)
         {
-            throw new NotImplementedException();
+            return _transferDal.Get(t => t.Id == id);
         }
 
         public void Create(Transfer entity)
         {
-            throw new NotImplementedException();
+            _transferDal.Add(entity);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var transfer = _transferDal.Get(t => t.Id == id);
+            if (transfer != null)
+            {
+                _transferDal.Delete(transfer);
+            }
         }
 
         public IEnumerable<Transfer> GetAll(Expression<Func<Transfer, bool>> filter = null)
         {
-            throw new NotImplementedException();
+            return _transferDal.GetAll(filter);
         }
 
         public void Update(Transfer entity)
         {
-            throw new NotImplementedException();
+            _transferDal.Update(entity);
         }
     }
 }
