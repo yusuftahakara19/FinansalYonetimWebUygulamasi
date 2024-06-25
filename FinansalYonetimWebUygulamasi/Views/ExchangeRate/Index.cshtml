@@ -1,0 +1,25 @@
+﻿@model Dictionary<string, BusinessLayer.Models.ExchangeRate>
+
+<h2>Exchange Rates</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Currency</th>
+            <th>Buy</th>
+            <th>Sell</th>
+            <th>Change (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var rate in Model)
+        {
+            <tr>
+                <td>@rate.Value.Currency</td>
+                <td>@rate.Value.Alis</td>
+                <td>@rate.Value.Satis</td>
+                <td>@rate.Value.Degisim</td>
+            </tr>
+        }
+    </tbody>
+</table>

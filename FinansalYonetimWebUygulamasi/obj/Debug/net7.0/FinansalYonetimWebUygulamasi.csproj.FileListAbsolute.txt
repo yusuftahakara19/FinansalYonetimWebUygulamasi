@@ -80,3 +80,4 @@ D:\FinansalYonetimWebUygulamasi\FinansalYonetimWebUygulamasi\obj\Debug\net7.0\re
 D:\FinansalYonetimWebUygulamasi\FinansalYonetimWebUygulamasi\obj\Debug\net7.0\FinansalYonetimWebUygulamasi.pdb
 D:\FinansalYonetimWebUygulamasi\FinansalYonetimWebUygulamasi\obj\Debug\net7.0\FinansalYonetimWebUygulamasi.genruntimeconfig.cache
 D:\FinansalYonetimWebUygulamasi\FinansalYonetimWebUygulamasi\obj\Debug\net7.0\ref\FinansalYonetimWebUygulamasi.dll
+D:\FinansalYonetimWebUygulamasi\FinansalYonetimWebUygulamasi\bin\Debug\net7.0\Newtonsoft.Json.dll

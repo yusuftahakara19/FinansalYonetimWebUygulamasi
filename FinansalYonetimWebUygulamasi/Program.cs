@@ -8,6 +8,8 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpClient<BusinessLayer.Services.ExchangeRateService>();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<FinanceDbContext>();
