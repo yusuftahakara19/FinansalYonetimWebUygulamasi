@@ -9,9 +9,10 @@ namespace EntityLayer.Concrete
     public class Transfer
     {
         public int Id { get; set; }
-        public int FromAccountId { get; set; }
-        public int ToAccountId { get; set; }
+        public int SenderUserId { get; set; }
+        public int RecipientUserId { get; set; }
         public decimal Amount { get; set; }
-        public DateTime TransferDate { get; set; }
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
     }
 }

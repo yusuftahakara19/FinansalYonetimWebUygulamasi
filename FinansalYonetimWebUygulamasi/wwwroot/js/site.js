@@ -53,6 +53,7 @@
     };
 });
 
+
 $(document).ready(function () {
     $.validator.methods.range = function (value, element, param) {
         var globalizedValue = value.replace(",", ".");

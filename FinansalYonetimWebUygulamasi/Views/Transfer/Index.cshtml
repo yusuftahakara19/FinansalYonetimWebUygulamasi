@@ -1,0 +1,25 @@
+﻿@model IEnumerable<EntityLayer.Concrete.Transfer>
+
+<h2>Para Transferleri</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Alıcı</th>
+            <th>Miktar</th>
+            <th>Tarih</th>
+            <th>Açıklama</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var transfer in Model)
+        {
+            <tr>
+                <td>@transfer.RecipientUserId</td>
+                <td>@transfer.Amount</td>
+                <td>@transfer.Date.ToString("dd/MM/yyyy")</td>
+                <td>@transfer.Description</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="@Url.Action("Create")" class="btn btn-success">Yeni Transfer</a>
