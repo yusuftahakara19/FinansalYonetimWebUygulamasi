@@ -1,22 +1,188 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  margin-bottom: 60px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.navbar {
+    background-color: #f8f9fa;
+    padding: 1rem;
+    color: #006748;
+}
+
+    .navbar .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+.navbar-brand {
+    color: #006748;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-toggler {
+    display: none;
+    background-color: transparent;
+    border: none;
+    color: #006748;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.navbar-nav {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-item {
+    display: inline;
+}
+
+.nav-link {
+    color: #006748;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s;
+}
+
+    .nav-link:hover {
+        background-color: #f8f9fa;
+        border-radius: 0.25rem;
+        color: #9C9155;
+    }
+
+.content {
+    padding: 2rem;
+}
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    display: none; /* Ensure all slides are hidden initially */
+}
+
+    .slide img {
+        width: 100%;
+        vertical-align: middle;
+    }
+
+.caption {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #009688;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.navigation {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.nav-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+    .nav-dot.active {
+        background-color: #00573f;
+    }
+
+.footer {
+    background-color: #00573f;
+    color: white;
+    padding: 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Media Queries for Responsive Navbar */
+@media (max-width: 768px) {
+    .caption {
+        font-size: x-small;
+        position: initial;
+        background-color: white;
+        color: #006748;
+    }
+
+    .navbar .container {
+        flex-direction: column;
+        align-items: center; /* Center align items */
+    }
+
+    .navbar-toggler {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        display: none; /* Hide the menu by default */
+        align-items: start; /* Start align items */
+    }
+
+        .navbar-nav.show {
+            display: flex;
+        }
+
+    .nav-item {
+        width: 100%;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .nav-link {
+        padding: 0;
+        text-align: center; /* Center align text */
+        width: 100%;
+    }
+
+    .footer {
+        text-align: center; /* Center align footer text */
+    }
 }
