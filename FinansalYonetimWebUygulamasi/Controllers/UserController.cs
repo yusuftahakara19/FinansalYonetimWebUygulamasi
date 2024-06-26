@@ -76,7 +76,7 @@ namespace FinansalYonetimWebUygulamasi.Controllers
                 {
                     user.Password = model.NewPassword;
                     _userService.Update(user);
-                    ViewBag.Message = "Password changed successfully.";
+                    ViewBag.Message = "Şifre değiştirme işleminiz başarıyla tamamlandı.";
                 }
                 else
                 {

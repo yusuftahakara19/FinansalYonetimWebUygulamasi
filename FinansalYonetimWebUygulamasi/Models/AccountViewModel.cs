@@ -11,6 +11,7 @@ namespace FinansalYonetimWebUygulamasi.Models
 
         [Required(ErrorMessage = "Bakiye alanı zorunludur.")]
         [Range(0, double.MaxValue, ErrorMessage = "Lütfen geçerli bir değer giriniz.")]
+        [RegularExpression(@"^\d+(\,\d{1,2})?$", ErrorMessage = "Lütfen geçerli bir bakiye değeri girin.")]
         public decimal Balance { get; set; }
 
         public int UserId { get; set; }

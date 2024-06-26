@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FinansalYonetimWebUygulamasi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cc22fbd5b75d30bcedfceebe73f5322878a0c189")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b40ac31e3c80995d8b32aef9c4e245d2e9c58753")]
 [assembly: System.Reflection.AssemblyProductAttribute("FinansalYonetimWebUygulamasi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FinansalYonetimWebUygulamasi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
