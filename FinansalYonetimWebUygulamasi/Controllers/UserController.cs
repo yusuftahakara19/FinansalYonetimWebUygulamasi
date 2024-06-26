@@ -85,5 +85,23 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             }
             return View(model);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteAccount()
+        {
+            var userEmail = HttpContext.Session.GetString("UserEmail");
+            var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
+
+            if (user != null)
+            {
+                _userService.Delete(user.Id);
+                HttpContext.Session.Remove("UserEmail");
+                return RedirectToAction("Index", "Home");
+            }
+
+            ModelState.AddModelError("", "Hesap silinemedi.");
+            return RedirectToAction("ChangePassword");
+        }
     }
 }
