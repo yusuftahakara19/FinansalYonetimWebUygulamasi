@@ -6,40 +6,34 @@
 <div class="slider">
     <div class="slides">
         <div class="slide">
-            <img src="~/images/slide1.png" alt="Slide 1">
-              @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
-                {
-            <div class="caption">
-
-                   <h2>Kolayca Kişisel Hesabınız Yönetin</h2>
+            <img src="~/images/slide1.png" alt="Slide 1" class="rounded-img">
+            @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
+            {
+                <div class="caption">
+                    <h2>Kolayca Kişisel Hesabınızı Yönetin</h2>
                     <a href="/account/index" class="button">Keşfet</a>
-            </div>
+                </div>
             }
-
         </div>
         <div class="slide">
-            <img src="~/images/slide2.png" alt="Slide 2">
-              @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
-                {
-            <div class="caption">
-              
-                <h2>Masraf Kayıtlarınızı Tutun</h2>
+            <img src="~/images/slide2.png" alt="Slide 2" class="rounded-img">
+            @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
+            {
+                <div class="caption">
+                    <h2>Masraf Kayıtlarınızı Tutun</h2>
                     <a href="/transaction/index" class="button">Keşfet</a>
-            </div>
+                </div>
             }
-
         </div>
         <div class="slide">
-            <img src="~/images/slide3.png" alt="Slide 3">
-             @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
-                {
-            <div class="caption">
-              
-                <h2>Para Transfer İşlemleri</h2>
+            <img src="~/images/slide3.png" alt="Slide 3" class="rounded-img">
+            @if (HttpContextAccessor.HttpContext.Session.GetString("UserEmail") != null)
+            {
+                <div class="caption">
+                    <h2>Para Transfer İşlemleri</h2>
                     <a href="/transfer/index" class="button">Keşfet</a>
-            </div>
+                </div>
             }
-
         </div>
     </div>
     <div class="navigation">
@@ -48,3 +42,9 @@
         <div class="nav-dot" onclick="currentSlide(3)"></div>
     </div>
 </div>
+
+<style>
+    .rounded-img {
+        border-radius: 15px;
+    }
+</style>
