@@ -1,21 +1,30 @@
-﻿@model IEnumerable<EntityLayer.Concrete.Transfer>
+﻿@model FinansalYonetimWebUygulamasi.Models.TransferIndexViewModel
 
 <div class="index-container">
     <h2>Para Transferleri</h2>
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>Alıcı</th>
+                <th>Gönderen/Alıcı</th>
                 <th>Miktar</th>
                 <th>Tarih</th>
                 <th>Açıklama</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var transfer in Model)
+            @foreach (var transfer in Model.SentTransfers)
             {
                 <tr>
-                    <td>@transfer.RecipientUserId</td>
+                    <td>@transfer.RecipientUserId (Alıcı)</td>
+                    <td>@transfer.Amount</td>
+                    <td>@transfer.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@transfer.Description</td>
+                </tr>
+            }
+            @foreach (var transfer in Model.ReceivedTransfers)
+            {
+                <tr>
+                    <td>@transfer.SenderUserId (Gönderen)</td>
                     <td>@transfer.Amount</td>
                     <td>@transfer.Date.ToString("dd/MM/yyyy")</td>
                     <td>@transfer.Description</td>

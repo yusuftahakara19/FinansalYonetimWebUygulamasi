@@ -23,17 +23,25 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             var userEmail = HttpContext.Session.GetString("UserEmail");
             if (string.IsNullOrEmpty(userEmail))
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
             var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
             if (user == null)
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
-            var transfers = _transferService.GetAll(t => t.SenderUserId == user.Id);
-            return View(transfers);
+            var sentTransfers = _transferService.GetAll(t => t.SenderUserId == user.Id).ToList();
+            var receivedTransfers = _transferService.GetAll(t => t.RecipientUserId == user.Id).ToList();
+
+            var model = new TransferIndexViewModel
+            {
+                SentTransfers = sentTransfers,
+                ReceivedTransfers = receivedTransfers
+            };
+
+            return View(model);
         }
 
 
@@ -43,7 +51,7 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
             if (user == null)
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
             var senderAccounts = _accountService.GetAll(a => a.UserId == user.Id).ToList();
@@ -65,7 +73,7 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
             if (user == null)
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
             if (model.SenderAccountId == model.RecipientAccountId)
@@ -110,56 +118,6 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             model.RecipientAccounts = _accountService.GetAll(a => a.UserId == user.Id || a.UserId != user.Id).ToList();
             return View(model);
         }
-
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public IActionResult Create(TransferViewModel model)
-        //{
-        //    var userEmail = HttpContext.Session.GetString("UserEmail");
-        //    var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
-        //    if (user == null)
-        //    {
-        //        return RedirectToAction("Login", "Users");
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        var senderAccount = _accountService.GetById(model.SenderAccountId);
-        //        if (senderAccount.Balance < model.Amount)
-        //        {
-        //            ModelState.AddModelError("", "Bütçeniz yetersiz.");
-        //            model.SenderAccounts = _accountService.GetAll(a => a.UserId == user.Id).ToList();
-        //            model.RecipientAccounts = _accountService.GetAll(a => a.UserId == user.Id || a.UserId != user.Id).ToList();
-        //            return View(model);
-        //        }
-
-        //        senderAccount.Balance -= model.Amount;
-        //        _accountService.Update(senderAccount);
-
-        //        var recipientAccount = _accountService.GetById(model.RecipientAccountId);
-        //        recipientAccount.Balance += model.Amount;
-        //        _accountService.Update(recipientAccount);
-
-        //        var transfer = new Transfer
-        //        {
-        //            SenderUserId = user.Id,
-        //            RecipientUserId = recipientAccount.UserId,
-        //            Amount = model.Amount,
-        //            Date = model.Date,
-        //            Description = model.Description
-        //        };
-        //        _transferService.Create(transfer);
-        //        return RedirectToAction(nameof(Index));
-        //    }
-
-        //    var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage).ToList();
-        //    ViewBag.Errors = errors;
-
-        //    model.SenderAccounts = _accountService.GetAll(a => a.UserId == user.Id).ToList();
-        //    model.RecipientAccounts = _accountService.GetAll(a => a.UserId == user.Id || a.UserId != user.Id).ToList();
-        //    return View(model);
-        //}
 
     }
 }

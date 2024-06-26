@@ -23,13 +23,13 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             var userEmail = HttpContext.Session.GetString("UserEmail");
             if (string.IsNullOrEmpty(userEmail))
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
             var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
             if (user == null)
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
             ViewBag.UserEmail = user.Email;
@@ -62,7 +62,7 @@ namespace FinansalYonetimWebUygulamasi.Controllers
             var user = _userService.GetAll(u => u.Email == userEmail).FirstOrDefault();
             if (user == null)
             {
-                return RedirectToAction("Login", "Users");
+                return RedirectToAction("Login", "User");
             }
 
             if (ModelState.IsValid)

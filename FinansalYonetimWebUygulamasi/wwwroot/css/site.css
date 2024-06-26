@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -6,6 +7,7 @@ body {
     color: #343a40;
 }
 
+/* Navbar Styles */
 .navbar {
     background-color: #f8f9fa;
     padding: 1rem;
@@ -59,10 +61,12 @@ body {
         color: #9C9155;
     }
 
+/* Content Styles */
 .content {
     padding: 2rem;
 }
 
+/* Slider Styles */
 .slider {
     position: relative;
     max-width: 100%;
@@ -128,6 +132,7 @@ body {
         background-color: #00573f;
     }
 
+/* Footer Styles */
 .footer {
     background-color: #00573f;
     color: white;
@@ -182,7 +187,7 @@ body {
     font-size: 1rem;
     line-height: 1.5;
     border-radius: 0.25rem;
-    min-width : 5rem;
+    min-width: 5rem;
 }
 
 .btn-primary {
@@ -320,4 +325,12 @@ body {
 
 .text-danger {
     color: #dc3545;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 1rem;
+    border-radius: 4px;
 }

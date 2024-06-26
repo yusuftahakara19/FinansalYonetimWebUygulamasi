@@ -17,10 +17,10 @@ builder.Services.AddScoped<IUserService, UserManager>();
 builder.Services.AddScoped<IUserDal, EfUserDal>();
 builder.Services.AddScoped<IAccountService, AccountManager>();
 builder.Services.AddScoped<IAccountDal, EfAccountDal>();
-builder.Services.AddScoped<ITransactionService, TransactionManager>(); // Bu satýrý ekleyin
-builder.Services.AddScoped<ITransactionDal, EfTransactionDal>(); // Bu satýrý ekleyin
-builder.Services.AddScoped<ITransferService, TransferManager>(); // Bu satýrý ekleyin
-builder.Services.AddScoped<ITransferDal, EfTransferDal>(); // Bu satýrý ekleyin
+builder.Services.AddScoped<ITransactionService, TransactionManager>(); 
+builder.Services.AddScoped<ITransactionDal, EfTransactionDal>(); 
+builder.Services.AddScoped<ITransferService, TransferManager>(); 
+builder.Services.AddScoped<ITransferDal, EfTransferDal>(); 
 
 
 builder.Services.AddSession();
