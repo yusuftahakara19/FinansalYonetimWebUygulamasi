@@ -24,7 +24,7 @@ namespace FinansalYonetimWebUygulamasi.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { Name = model.Name, Email = model.Email, Password = model.Password };
+                var user = new User { Name = model.Name, Email = model.Email, Password = model.Password, CreatedDate = DateTime.Now };
                 _userService.Register(user);
                 return RedirectToAction("Login");
             }
